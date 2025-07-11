@@ -1,4 +1,3 @@
-// client/src/components/BannerCarousel.js
 'use client';
 
 import dynamic from 'next/dynamic';

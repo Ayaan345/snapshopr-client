@@ -1,77 +1,9 @@
-// "use client";
-// import { useState, useEffect } from 'react';
-// import { fetchItems, deleteItem } from '@/lib/api';
-// import { useSession } from 'next-auth/react';
-// import { useRouter } from 'next/navigation';
-// import ItemGrid from '../../components/ItemGrid';
-
-// export default function ProfilePage() {
-//   const { data: session, status } = useSession();
-//   const [mine, setMine] = useState([]);
-//   const router = useRouter();
-
-//   useEffect(() => {
-//     if (status === 'unauthenticated') {
-//       router.push('/login');
-//     }
-//   }, [status, router]);
-
-//   useEffect(() => {
-//     if (session?.user?.id) {
-//       fetchItems().then(res => {
-//         setMine(res.data.filter(i => i.createdBy._id === session.user.id));
-//       }).catch(error => {
-//         console.error('Error fetching items:', error);
-//       });
-//     }
-//   }, [session]);
-
-//   const remove = async id => {
-//     try {
-//       if (!session?.user?.token) {
-//         alert('Authentication required');
-//         return;
-//       }
-//       await deleteItem(id, session.user.token);
-//       setMine(mine.filter(i => i._id !== id));
-//     } catch (error) {
-//       console.error('Error deleting item:', error);
-//       alert('Failed to delete item');
-//     }
-//   };
-
-//   if (status === 'loading') {
-//     return <div>Loading...</div>;
-//   }
-
-//   if (status === 'unauthenticated') {
-//     return null;
-//   }
-
-//   return (
-//     <section>
-//       <h2 className="font-bold text-2xl mb-4 font-amazon-ember">Your Products</h2>
-//       <span className="text-sm font-light mb-4 block font-amazon-ember">
-//         Check each product page for other buying options.
-//       </span>
-//       {/* {mine.map(i => (
-//         <ItemCard key={i._id} item={i}>
-//           <button onClick={()=>remove(i._id)}>Remove</button>
-//         </ItemCard>
-//       ))} */}
-//       <ItemGrid items={mine} />
-//     </section>
-//   );
-// }
-
 "use client";
 import { useState, useEffect } from 'react';
-import { fetchItems, deleteItem } from '@/lib/api'; // Assumes '@/lib/api' is correctly configured
-import { useSession } from 'next-auth/react'; // Requires next-auth to be installed and configured
-import { useRouter } from 'next/navigation'; // Requires Next.js router
+import { fetchItems, deleteItem } from '@/lib/api'; 
+import { useSession } from 'next-auth/react'; 
+import { useRouter } from 'next/navigation'; 
 import ItemGrid from '../../components/ItemGrid';
-
-// Assuming ItemGrid component exists at '../../components/ItemGrid'
 
 
 export default function ProfilePage() {
@@ -106,7 +38,6 @@ export default function ProfilePage() {
   const remove = async id => {
     try {
       if (!session?.user?.token) {
-        // Use a proper notification/modal instead of alert in a real app
         alert('Authentication required');
         return;
       }
@@ -115,28 +46,25 @@ export default function ProfilePage() {
     } catch (error) {
       console.error('Error deleting item:', error);
       alert('Failed to delete item');
-      // Implement user-friendly error display here
     }
   };
 
-  // Show loading state while session is being determined
+  // Show loading while session is being determined
   if (status === 'loading') {
     return <div className="flex justify-center items-center h-screen text-lg font-amazon-ember">Loading...</div>;
   }
 
-  // If unauthenticated, return null after redirecting (router.push handles display)
   if (status === 'unauthenticated') {
     return null;
   }
 
   return (
     <section className="min-h-screen bg-gray-100 font-inter">
-      {/* Main Content Area */}
       <div className="container mx-auto px-4 py-8">
         {/* Profile Header Section */}
         <div className="bg-white p-6 rounded-lg shadow-md mb-8">
           <div className="flex items-center space-x-6">
-            {/* Profile Image Placeholder */}
+
             <img
               src="/icons/user-icon.svg"
               alt="Profile"
@@ -170,5 +98,3 @@ export default function ProfilePage() {
   );
 }
 
-// ItemGrid Component - You should have this in your components directory
-// This is a basic example. Ensure your actual ItemGrid matches its usage here.

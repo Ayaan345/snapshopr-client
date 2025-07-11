@@ -1,4 +1,4 @@
-// components/FirstTimeAlert.js
+
 "use client";
 export default function FirstTimeAlert({ onClose }) {
   return (

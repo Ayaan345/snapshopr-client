@@ -1,8 +1,7 @@
-// client/src/app/listings/[id]/page.js
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import React from 'react';
-import ChatStarter from '@/components/ChatStarter';   // <-- plain import
+import ChatStarter from '@/components/ChatStarter';   
 
 const dummyFeatures = [
   'High-quality material for durability',
@@ -11,7 +10,7 @@ const dummyFeatures = [
   'Easy to clean and maintain',
 ];
 
-export const revalidate = 60; // ISR
+export const revalidate = 60; 
 
 export default async function ListingDetail({ params }) {
   const { id } = await params;

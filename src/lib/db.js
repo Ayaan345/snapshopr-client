@@ -1,4 +1,3 @@
-// client/src/lib/db.js
 import mongoose from 'mongoose';
 
 let isConnected = false;
@@ -8,7 +7,7 @@ export default async function dbConnect() {
 
   try {
     await mongoose.connect(process.env.MONGODB_URI, {
-      dbName: 'your-db-name',  // optional, or pull from .env
+      dbName: 'your-db-name', 
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
