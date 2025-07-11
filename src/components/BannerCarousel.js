@@ -107,11 +107,13 @@ export default function BannerCarousel() {
           src={banner.image}
           alt={banner.alt}
           fill // Added fill prop
-          style={{ objectFit: 'cover' }} // Equivalent to object-cover
-          className={`transition-opacity duration-700 ${
+          width={1600}             // ← replace with your actual image width
+          height={400}             // ← replace with your actual image height
+          className={`object-cover transition-opacity duration-700 ${
             idx === current ? "opacity-100" : "opacity-0"
           }`}
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw" // Added sizes prop for responsiveness
+          sizes="100vw"
+          priority={idx === 0}    
         />
       ))}
 
