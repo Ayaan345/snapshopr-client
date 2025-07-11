@@ -104,7 +104,6 @@
 // }
 
 
-
 // Header.js
 "use client";
 
@@ -114,6 +113,7 @@ import { useState, useEffect, useRef } from "react";
 import { FaSearch, FaBars, FaTimes } from "react-icons/fa"; // Import FaBars and FaTimes
 import { useRouter } from "next/navigation";
 import SearchInput from "./SearchInput";
+import Image from "next/image"; // Import Image component
 
 export default function Header() {
   const { data: session } = useSession();
@@ -148,8 +148,12 @@ export default function Header() {
     <header className="bg-white text-blue-600 shadow sticky top-0 z-50">
       <nav className="max-w-7xl mx-auto flex items-center justify-between px-4 py-2">
         <Link href="/" className="flex items-center h-8 sm:h-10 text-xl sm:text-2xl font-bold hover:text-yellow-300"> {/* Adjusted size */}
-          <img src="/icons/webicon.svg" alt="Logo" className="h-6 w-6 sm:h-8 sm:w-8" /> {/* Adjusted size */}
-          <img src="/icons/name.svg" alt="Logo" className="ml-2 sm:ml-4 h-16 w-16 sm:h-20 sm:w-20" /> {/* Adjusted size and margin */}
+          <div className="relative h-6 w-6 sm:h-8 sm:w-8"> {/* Wrapper for Image */}
+            <Image src="/icons/webicon.svg" alt="Logo" fill style={{ objectFit: 'contain' }} sizes="24px" /> {/* Changed img to Image */}
+          </div>
+          <div className="relative ml-2 sm:ml-4 h-16 w-16 sm:h-20 sm:w-20"> {/* Wrapper for Image */}
+            <Image src="/icons/name.svg" alt="Logo" fill style={{ objectFit: 'contain' }} sizes="80px" /> {/* Changed img to Image */}
+          </div>
         </Link>
 
         {/* Hamburger menu for small screens */}
@@ -186,7 +190,9 @@ export default function Header() {
             {session ? (
               <div className="relative flex items-center space-x-4 mt-2 md:mt-0" ref={dropdownRef}>
                 <button onClick={() => setShowDropdown(!showDropdown)} aria-label="User Account" className="flex items-center">
-                  <img src="/icons/user-icon.svg" alt="User" className="h-7 w-7" />
+                  <div className="relative h-7 w-7"> {/* Wrapper for Image */}
+                    <Image src="/icons/user-icon.svg" alt="User" fill style={{ objectFit: 'contain' }} sizes="28px" /> {/* Changed img to Image */}
+                  </div>
                   <span className="ml-2 text-blue-900">{session.user.name || 'Account'}</span>
                 </button>
 

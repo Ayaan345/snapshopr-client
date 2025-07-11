@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { signIn, getSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image'; // Import Image component
 
 export default function LoginForm() {
   const [form, setForm] = useState({ email: '', password: '' });
@@ -67,7 +68,9 @@ export default function LoginForm() {
         onClick={() => signIn('google')}
         className="flex items-center justify-center gap-3 rounded py-2 hover:bg-gray-100 transition"
       >
-        <img src="/icons/google.svg" alt="Google" className="w-5 h-5" />
+        <div className="relative w-5 h-5"> {/* Wrapper for Image */}
+          <Image src="/icons/google.svg" alt="Google" fill style={{ objectFit: 'contain' }} sizes="20px" /> {/* Changed img to Image */}
+        </div>
         Sign in with Google
       </button>
 
@@ -76,12 +79,14 @@ export default function LoginForm() {
         onClick={() => signIn('github')}
         className="flex items-center justify-center gap-3 rounded py-2 hover:bg-gray-100 transition"
       >
-        <img src="/icons/github.svg" alt="GitHub" className="w-5 h-5" />
+        <div className="relative w-5 h-5"> {/* Wrapper for Image */}
+          <Image src="/icons/github.svg" alt="GitHub" fill style={{ objectFit: 'contain' }} sizes="20px" /> {/* Changed img to Image */}
+        </div>
         Sign in with GitHub
       </button>
 
       <p className="text-center text-gray-500 text-sm mt-2">
-        Don't have an account?{' '}
+        {"Don't have an account?"}
         <a href="/signup" className="text-blue-600 hover:underline">
           Sign Up
         </a>

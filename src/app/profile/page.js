@@ -4,6 +4,7 @@ import { fetchItems, deleteItem } from '@/lib/api';
 import { useSession } from 'next-auth/react'; 
 import { useRouter } from 'next/navigation'; 
 import ItemGrid from '../../components/ItemGrid';
+import Image from 'next/image'; // Import Image component
 
 
 export default function ProfilePage() {
@@ -64,12 +65,15 @@ export default function ProfilePage() {
         {/* Profile Header Section */}
         <div className="bg-white p-6 rounded-lg shadow-md mb-8">
           <div className="flex items-center space-x-6">
-
-            <img
-              src="/icons/user-icon.svg"
-              alt="Profile"
-              className="w-24 h-24 rounded-full border-none"
-            />
+            <div className="relative w-24 h-24 rounded-full overflow-hidden border-none"> {/* Wrapper for Image */}
+              <Image // Changed img to Image
+                src="/icons/user-icon.svg"
+                alt="Profile"
+                fill // Added fill prop
+                style={{ objectFit: 'contain' }} // Equivalent to object-contain
+                sizes="96px" // Specific size for this image
+              />
+            </div>
             <div>
               <h1 className="text-3xl font-bold text-gray-800 font-amazon-ember">
                 {session?.user?.name || "Your Profile"}
@@ -88,13 +92,11 @@ export default function ProfilePage() {
           {mine.length > 0 ? (
             <ItemGrid items={mine} onRemove={remove} showRemoveButton={true} />
           ) : (
-            <p className="text-gray-500">You haven't listed any products yet.</p>
+            <p className="text-gray-500">{"You haven't listed any products yet."}</p>
           )}
         </div>
-
         
       </div>
     </section>
   );
 }
-

@@ -71,10 +71,10 @@
 // }
 
 
-// BannerCarousel.js
 'use client';
 
 import { useState, useEffect, useRef } from "react";
+import Image from "next/image"; // Import Image component
 
 const banners = [
   { id: 1, image: "/images/banner1.jpg", alt: "Big Sale" },
@@ -102,14 +102,16 @@ export default function BannerCarousel() {
       aria-label="Promotional Banners"
     >
       {banners.map((banner, idx) => (
-        <img
+        <Image // Changed img to Image
           key={banner.id}
           src={banner.image}
           alt={banner.alt}
-          className={`absolute w-full h-full object-cover transition-opacity duration-700 ${
+          fill // Added fill prop
+          style={{ objectFit: 'cover' }} // Equivalent to object-cover
+          className={`transition-opacity duration-700 ${
             idx === current ? "opacity-100" : "opacity-0"
           }`}
-          loading="lazy"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw" // Added sizes prop for responsiveness
         />
       ))}
 

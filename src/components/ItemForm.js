@@ -1,7 +1,8 @@
 
-"use client";
+'use client';
 
 import { useState } from 'react';
+import Image from "next/image"; // Import Image component
 
 function ItemForm({ onCreate }) {
   const [title, setTitle] = useState('');
@@ -115,7 +116,15 @@ function ItemForm({ onCreate }) {
         {imagePreview && (
           <div className="mt-4">
             <p className="text-sm text-gray-600 mb-2">Image Preview:</p>
-            <img src={imagePreview} alt="Preview" className="max-w-xs h-auto rounded-md shadow-sm border border-gray-200" />
+            <div className="relative w-full max-w-xs h-48 rounded-md shadow-sm border border-gray-200"> {/* Added relative positioning and fixed height for Image */}
+              <Image // Changed img to Image
+                src={imagePreview}
+                alt="Preview"
+                fill // Added fill prop
+                style={{ objectFit: 'contain' }} // Equivalent to object-contain
+                className="rounded-md"
+              />
+            </div>
           </div>
         )}
       </div>
