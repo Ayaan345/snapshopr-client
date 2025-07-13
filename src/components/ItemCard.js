@@ -5,9 +5,10 @@ import Link from 'next/link';
 import Image from 'next/image'; // Import Image component
 
 function ItemCardInner({ item, children }) {
-  const backendBaseUrl =
-    process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:4000';
-
+  const backendBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:4000';
+  const imageUrl = item.imageUrl?.startsWith('/uploads/')
+    ? `${backendBaseUrl}${item.imageUrl}`
+    : item.imageUrl;
   const { rupees, paisas } = useMemo(() => {
     const priceNum =
       typeof item.price === 'number' ? item.price : parseFloat(item.price) || 0;
@@ -23,7 +24,7 @@ function ItemCardInner({ item, children }) {
         {item.imageUrl && (
           <div className="w-full h-40 pl-5 sm:h-56 flex sm:justify-center sm:pl-10 relative mb-3 rounded-md overflow-hidden mx-auto"> {/* Added mx-auto to center the image container */}
             <Image // Changed img to Image
-              src={`${backendBaseUrl}${item.imageUrl}`}
+              src={imageUrl}
               alt={item.title}
               fill // Added fill prop
               style={{ objectFit: 'contain' }} // Equivalent to object-contain

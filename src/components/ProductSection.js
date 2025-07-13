@@ -12,6 +12,7 @@ export default function ProductSection({ title, category }) {
       try {
         const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/items`);
         const data = await res.json();
+        console.log('Fetched items:', data);
         setProducts(data);
       } catch (err) {
         console.error("Failed to fetch products:", err);

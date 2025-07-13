@@ -1,6 +1,3 @@
-// This is NOT a complete file to copy-paste, but rather an illustration of the concepts.
-// You would need to set up Tailwind CSS in your Next.js project first.
-
 "use client";
 import ItemForm from '@/components/ItemForm';
 import { useSession } from 'next-auth/react';
@@ -51,19 +48,18 @@ export default function SellPage() {
     } catch (error) {
       console.error('Error creating item:', error);
       console.error('Error details:', error.response?.data);
-      alert('Failed to create item. Please try again.'); // Consider a more user-friendly modal/toast
+      alert('Failed to create item. Please try again.'); 
     }
   };
 
   return (
-    // Main container for the page
     <section className="min-h-screen bg-gray-50 py-10 px-4 sm:px-6 lg:px-8 flex items-center justify-center">
-      {/* Content wrapper with max-width and centering for larger screens */}
+      {/* Content wrapper  */}
       <div className="max-w-md w-full space-y-8 p-8 bg-white shadow-lg rounded-lg border border-gray-200">
         <h1 className="text-3xl font-extrabold text-gray-900 text-center mb-6">
           List a New Product
         </h1>
-        {/* ItemForm component will also need styling applied internally */}
+        {/* ItemForm */}
         <ItemForm onCreate={handleCreate} />
       </div>
     </section>

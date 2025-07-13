@@ -18,7 +18,7 @@ export default function AccountPage() {
 
   useEffect(() => {
     if (session?.user?.token) {
-      // fetch profile details from backend /users/profile
+      // fetch profile  from backend /users/profile
       axios.get(`${process.env.NEXT_PUBLIC_API_URL}/users/profile`, {
         headers:{ Authorization:`Bearer ${session.user.token}` }
       }).then(res => setInfo(res.data))
