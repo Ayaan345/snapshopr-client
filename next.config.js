@@ -6,6 +6,13 @@ module.exports = {
   images: {
     remotePatterns: [
       {
+        protocol: 'https',
+        hostname: 'snapshopr-server-production.up.railway.app',
+        port: '',
+        pathname: '/uploads/**',
+      },
+      // You can keep localhost for local dev
+      {
         protocol: 'http',
         hostname: 'localhost',
         port: '4000',
