@@ -12,6 +12,10 @@ export default function StartChatButton({ receiverId }) {
   console.log("receiverId in StartChatButton:", receiverId);
 
   const startChat = async () => {
+    if (!session) {
+      alert("User is not logined in. Please log in to start a chat.");
+      return;
+    }
     if (!senderId || !receiverId) {
       console.error("Missing senderId or receiverId");
       return;
@@ -27,10 +31,6 @@ export default function StartChatButton({ receiverId }) {
       router.push(`/chat/${data.conversationId}`);
     } else {
       console.error("Missing conversationId!", data);
-    }
-    if (!session) {
-      alert("User is not logined in. Please log in to start a chat.");
-      return;
     }
   };
 
