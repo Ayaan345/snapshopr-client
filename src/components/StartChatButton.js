@@ -28,6 +28,10 @@ export default function StartChatButton({ receiverId }) {
     } else {
       console.error("Missing conversationId!", data);
     }
+    if (!session) {
+      alert("User is not logined in. Please log in to start a chat.");
+      return;
+    }
   };
 
   return <button className="bg-orange-500 text-white py-3 px-4 rounded-full font-semibold text-lg hover:bg-orange-600 transition-colors" onClick={startChat}>Chat With Seller</button>;
