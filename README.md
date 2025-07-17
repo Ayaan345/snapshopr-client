@@ -1,36 +1,111 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# SnapShopr
 
-## Getting Started
+![SnapShopr Logo](./assets/logo.png)
 
-First, run the development server:
+> A hyper-local MERN‑stack marketplace with real‑time chat and seamless deployment on Vercel.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+---
+
+## 🔗 Live Demo
+
+Explore it live at: [https://snapshopr.vercel.app](https://snapshopr.vercel.app)
+
+## 🚀 Features
+
+* **User Authentication** via JWT (signup, login, logout)
+* **Product Listings** with create, read, update, delete (CRUD) operations
+* **Real‑Time Chat** between buyers and sellers powered by Socket.IO
+* **Search & Filters** to quickly find items
+* **Responsive UI** built with React and styled-components
+* **Deployment** on Vercel with CI/CD pipeline
+* **RESTful API** with Node.js, Express.js, and MongoDB
+
+## 🛠️ Tech Stack
+
+| Frontend          | Backend    | Database | DevOps         |
+| ----------------- | ---------- | -------- | -------------- |
+| React             | Node.js    | MongoDB  | Vercel         |
+| React Router      | Express.js | Mongoose | GitHub Actions |
+| styled-components | Socket.IO  |          |                |
+
+## 📂 Project Structure
+
+```
+snapshopr/
+├─ client/               # React frontend
+│  ├─ src/
+│  ├─ public/
+│  └─ package.json
+├─ server/               # Node.js backend
+│  ├─ src/
+│  ├─ .env.example
+│  └─ package.json
+├─ .gitignore
+├─ README.md
+└─ LICENSE
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## ⚙️ Installation & Setup
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+1. **Clone the repo**
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+   ```bash
+   git clone https://github.com/YourUsername/SnapShopr.git
+   cd SnapShopr
+   ```
 
-## Learn More
+2. **Client Setup**
 
-To learn more about Next.js, take a look at the following resources:
+   ```bash
+   cd client
+   npm install
+   npm start
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+3. **Server Setup**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+   ```bash
+   cd server
+   npm install
+   cp .env.example .env    # configure your environment variables
+   npm run dev             # starts backend on http://localhost:5000
+   ```
 
-## Deploy on Vercel
+4. **Environment Variables**
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+   * `MONGO_URI`: Your MongoDB connection string
+   * `JWT_SECRET`: Secret key for JWT signing
+   * `PORT`: (optional) Backend port (default: 5000)
+
+## 📸 Screenshots
+
+### Home & Product List
+
+![Home Screenshot](./assets/home.png)
+
+### Real‑Time Chat
+
+![Chat Screenshot](./assets/chat.png)
+
+## 🧪 Testing
+
+*Add tests here if implemented.*
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create your branch: `git checkout -b feature/YourFeature`
+3. Commit your changes: `git commit -m 'Add some feature'`
+4. Push to the branch: `git push origin feature/YourFeature`
+5. Open a Pull Request
+
+## 📜 License
+
+This project is licensed under the [MIT License](./LICENSE).
+
+## 📞 Contact
+
+* **Author**: Ayaan Shoaib
+* **GitHub**: \Ayaan345\([https://github](https://github.com/Ayaan345)
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
